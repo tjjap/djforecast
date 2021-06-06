@@ -1,0 +1,3 @@
+To clear the cache so .vscode/settings.json can be ignored:
+    git rm --cached .vscode/settings.json
+
