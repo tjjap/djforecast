@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from django.conf.locale.es.formats import DATE_INPUT_FORMATS
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -107,13 +109,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
+
+USE_THOUSAND_SEPARATOR = True
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+
+from django.conf.locale.en import formats as en_formats
+
+en_formats.DATE_FORMATS = ['%Y-%M-%d']
 
 
 # Static files (CSS, JavaScript, Images)
