@@ -1,12 +1,13 @@
-directorate
-ambm
-pid
-client
-project
-rental
-months
-level
-order_dd
-order_val
-gpm
-bast_dd
+directorate     CharField       max_length=10   choices=[(), (), ]
+ambm            CharField       max_length=30
+pid             CharField       max_length=10   unique=True
+client          CharField       max_length=50
+project         CharField       max_length=50
+rental          BooleanField    default=False 
+nmonth          IntegerField    
+level           CharField       max_length=2
+order_dd        DateField       
+order_val       DecimalField    max_digits=17   decimal_places=2
+gpm             DecimalField    max_digits=6    decimal_places=2
+bast_dd         DateField
+
