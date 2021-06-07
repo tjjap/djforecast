@@ -8,9 +8,31 @@ class Pipeline(models.Model):
     client = models.CharField('Client Name', max_length=50)
     project = models.CharField('Project Name', max_length=50)
     rental = models.BooleanField('Rental/Mngd Service', default=False)
-    nmonth = models.IntegerField('x Months')
+    nmonth = models.IntegerField('x Months', default=1)
     level = models.CharField('Level', max_length=2)
     order_dd = models.DateField('SO Booking DD')
     order_val = models.DecimalField('Value', max_digits=14, decimal_places=0)
     gpm = models.DecimalField('GPM (%)', max_digits=6, decimal_places=2)
     bast_dd = models.DateField('BAST Date')
+
+    # Reformat order_dd
+    def format_order_dd(self):
+        return self.order_dd.strftime('%b-%y')
+
+    # Column Header
+    format_order_dd.short_description = 'SO Date'
+
+    # Reformat order_val to in Million with thousand separator
+    def format_order_val(self):
+        order_mil = self.order_val / 1000000
+        return '{:,}'.format(order_mil)
+    
+    # Column Header
+    format_order_val.short_description = 'VALUE IN MILL'
+
+    # Reformat gpm to add %
+    def format_gpm(self):
+        return '{:.2f}%'.format(self.gpm)
+    
+    # Column Header
+    format_gpm.short_description = 'GPM'
