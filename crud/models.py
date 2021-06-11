@@ -41,4 +41,4 @@ class Pipeline(models.Model):
 
     class Meta:
         verbose_name_plural = "Sales Pipelines"
-        #ordering = ['-pid']
+        ordering = ['order_dd', 'level', '-order_val']
