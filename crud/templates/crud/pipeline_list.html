@@ -20,6 +20,9 @@
         <th scope="col" class="text-end">GPM</th>
         <th scope="col">SO Date</th>
         <th scope="col">BAST Date</th>
+        <th scope="col">Action</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +41,21 @@
         <td class="text-end">{{ row.format_gpm }}</td>
         <td>{{ row.format_order_dd }}</td>
         <td>{{ row.format_bast_dd }}</td>
+        <!--<td class="btn btn-outline-primary btn-sm">view</td>-->
+        <!--
+        <td class="btn btn-outline-primary btn-sm">
+          <a href="{% url 'pipeline-detail' pk=row.id %}">view</a>
+        </td>
+        -->
+        <td>
+          <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-success btn-sm">view</a>
+        </td>
+        <td>
+          <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-primary btn-sm">update</a>
+        </td>
+        <td>
+          <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-danger btn-sm">delete</a>
+        </td>
       </tr>
     {% endfor %}
     </tbody>
