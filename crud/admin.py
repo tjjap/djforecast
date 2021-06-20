@@ -11,7 +11,7 @@ from django.forms.widgets import TextInput, Textarea
 
 class PipelineAdmin(admin.ModelAdmin):
     list_filter = ("directorate", "ambm")
-    list_display = ("directorate", "ambm", "pid", "client", "project", "level", "format_order_val", "format_gpm", "format_order_dd", "rental",)
+    list_display = ("directorate", "ambm", "pid", "client", "project", "onetime", "nmonth", "level", "format_order_val", "format_gpm", "format_order_dd", "format_bast_dd",)
     #list_display = ("format_order_val", "directorate", "ambm", "pid", "client", "project", "level", "format_order_val")
     date_hierarchy = 'order_dd'
     
