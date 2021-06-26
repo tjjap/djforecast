@@ -1,3 +1,4 @@
+from crud.forms import PipelineForm
 from django.contrib import admin
 from django import forms
 from django.contrib.admin.options import ModelAdmin
@@ -14,13 +15,9 @@ class PipelineAdmin(admin.ModelAdmin):
     list_display = ("directorate", "ambm", "pid", "client", "project", "onetime", "nmonth", "level", "format_order_val", "format_gpm", "format_order_dd", "format_bast_dd",)
     #list_display = ("format_order_val", "directorate", "ambm", "pid", "client", "project", "level", "format_order_val")
     date_hierarchy = 'order_dd'
+    form = PipelineForm #to be able to use custom validation defined in the form
     
 
-    # formfield_overrides = {
-    #     models.DecimalField: {
-    #         'widget': forms.Textarea(attrs={'style': 'text-align:right;',}),
-    #     }
-    # }
 
 class LevelAdmin(admin.ModelAdmin):
     list_display = ("level", "format_weight",)

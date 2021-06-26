@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.db import models
+
 
 # Create your models here.
 class Pipeline(models.Model):

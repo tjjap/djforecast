@@ -1,0 +1,22 @@
+{% extends 'crud/base.html' %}
+
+{% block title %}
+    Delete
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3 p-3 bg-light" style="width:800px;">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>Are you sure to delete this pipeline? <br>{{ object.pid }} : {{ object.client }}</h3>
+            <div class="row">
+                <div class="col-2">
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </div>
+                <div class="col-2">
+                    <a href="{% url 'pipeline-list' %}" class="btn btn-outline-dark">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

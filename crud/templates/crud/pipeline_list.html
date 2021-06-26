@@ -1,9 +1,19 @@
 {% extends 'crud/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
-<div class="container">
+<div class="container-fluid px-5">
+  
   <h1 class="text-center">Pipelines All</h1>
+  {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+          </div>
+      {% endfor %}  
+  {% endif %}
   <p class="text-end">Type: [&#10004; : One-Time , &#10060; : Rental/Managed ]  &nbsp;&nbsp;&nbsp;Value: [ in Million Rp ]</p>
   <table class="table table-striped table-hover">
     <thead class="table-dark">
@@ -22,7 +32,7 @@
         <th scope="col">BAST Date</th>
         <th scope="col">Action</th>
         <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col"><a href="{% url 'pipeline-create' %}" class="btn btn-outline-light btn-sm"> + add&nbsp;</a></th>
       </tr>
     </thead>
     <tbody>
@@ -33,7 +43,6 @@
         <td>{{ row.pid }}</td>
         <td>{{ row.client }}</td>
         <td>{{ row.project }}</td>
-
         <td>{% if row.onetime == True %}&#10004;{% else %}&#10060;{% endif %}</td>
         <td>{{ row.nmonth }}</td>
         <td>{{ row.level }}</td>
@@ -41,20 +50,14 @@
         <td class="text-end">{{ row.format_gpm }}</td>
         <td>{{ row.format_order_dd }}</td>
         <td>{{ row.format_bast_dd }}</td>
-        <!--<td class="btn btn-outline-primary btn-sm">view</td>-->
-        <!--
-        <td class="btn btn-outline-primary btn-sm">
-          <a href="{% url 'pipeline-detail' pk=row.id %}">view</a>
-        </td>
-        -->
         <td>
           <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-success btn-sm">view</a>
         </td>
         <td>
-          <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-primary btn-sm">update</a>
+          <a href="{% url 'pipeline-update' pk=row.id %}" class="btn btn-outline-primary btn-sm">update</a>
         </td>
         <td>
-          <a href="{% url 'pipeline-detail' pk=row.id %}" class="btn btn-outline-danger btn-sm">delete</a>
+          <a href="{% url 'pipeline-delete' pk=row.id %}" class="btn btn-outline-danger btn-sm">delete</a>
         </td>
       </tr>
     {% endfor %}
